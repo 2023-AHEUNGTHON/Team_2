@@ -1,5 +1,7 @@
 from django.shortcuts import redirect, render
 from accounts.models import Article
+from .forms import ArticleForm
+
 
 def index(request):
     articles = Article.objects.all()
@@ -17,7 +19,9 @@ def create(request):
         article.save()
         return redirect('accounts:detail', pk=article.pk)
     else:
-        return render(request, 'accounts/create.html')
+        form = ArticleForm()
+        context = {'form' : form}
+        return render(request, 'accounts/create.html', context)
 
 def update(request, pk):
     article = Article.objects.get(pk=pk)
