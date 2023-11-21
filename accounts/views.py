@@ -13,25 +13,31 @@ def detail(request, pk):
 
 def create(request):
     if request.method == 'POST':
-        title = request.POST.get('title')
-        content = request.POST.get('content')
-        article = Article(title=title, content=content)
-        article.save()
-        return redirect('accounts:detail', pk=article.pk)
+        form = ArticleForm(request.POST)
+        if form.is_valid():
+            article = form.save()
+            return redirect('accounts:detail', article.pk)
     else:
         form = ArticleForm()
-        context = {'form' : form}
-        return render(request, 'accounts/create.html', context)
+    
+    context = {'form' : form}
+    return render(request, 'accounts/create.html', context)
 
 def update(request, pk):
+    print(pk)
     article = Article.objects.get(pk=pk)
-    if request.method == 'POST':
-        article.title = request.POST.get('title')
-        article.content = request.POST.get('content')
-        article.save()
+
+    if request.method == "POST":
+        form = ArticleForm(request.POST, instance=article)
+        if form.is_valid():
+            form.save()
+            return redirect('accounts:detail', pk=article.pk)
         return redirect('accounts:detail', pk=article.pk)
     else:
-        return render(request, 'accounts/update.html', {'article': article})
+        form = ArticleForm(instance=article)
+    
+    context = {'form' : form, 'article':article}
+    return render(request, 'accounts/update.html', context)
 
 def delete(request, pk):
     article = Article.objects.get(pk=pk)
