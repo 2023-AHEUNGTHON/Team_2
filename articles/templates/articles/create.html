@@ -3,11 +3,11 @@
 {% block content %}
     <h1>CREATE</h1>
     <hr>
-    <form action="{% url 'accounts:create' %}" method="POST" enctype="multipart/form-data">
+    <form action="{% url 'articles:create' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Submit">
     </form>
     <hr>
-    <a href="{% url 'accounts:index' %}">[BACK]</a>
+    <a href="{% url 'articles:index' %}">[BACK]</a>
 {% endblock content%}
