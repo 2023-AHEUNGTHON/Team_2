@@ -3,7 +3,7 @@
 {% block content %}
     <h1>CREATE</h1>
     <hr>
-    <form action="{% url 'accounts:create' %}" method="POST">
+    <form action="{% url 'accounts:create' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Submit">

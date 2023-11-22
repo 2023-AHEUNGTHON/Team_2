@@ -3,6 +3,10 @@
 {% block content %}
 
     <h1>DETAIL</h1>
+    {% if article.image %}
+        <img src="{{ article.image.url }}" >
+    {% endif %}
+    
     {% if article %}
         <p>글 번호 : {{article.id}}</p>
         <p>글 제목 : {{article.title}}</p>
@@ -20,4 +24,5 @@
     {% else %}
         <p>No article available.</p>
     {%endif%}
+
 {% endblock content%}
