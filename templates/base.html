@@ -9,11 +9,17 @@
     <title>Re:Try</title>
 </head>
 <body>
-    <a href="{% url 'accounts:signup' %}">회원가입</a>
-    <a href="{% url 'accounts:login' %}">로그인</a>
-    <a href=" {% url 'accounts:logout' %} ">로그아웃</a>
-    <h1>{{user}}님의 만두</h1>
-    <br>
+    <div>
+        <a href="{% url 'accounts:signup' %}">회원가입</a>
+        <a href="{% url 'accounts:login' %}">로그인</a>
+        <a href=" {% url 'accounts:logout' %} ">로그아웃</a>
+        <h1>{{user}}님의 만두</h1>
+        <form action="{% url 'accounts:delete' %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="회원 탈퇴">
+        </form>
+        <br>
+    </div>
     {% block content%}
     {% endblock content%}
 </body>

@@ -32,3 +32,8 @@ def signup(request):
         form = CustomUserCreationForm()
     context = {'form':form}
     return render(request, 'accounts/signup.html', context)
+
+def delete(requeest):
+    user = requeest.user
+    user.delete()
+    return redirect('articles:index')
