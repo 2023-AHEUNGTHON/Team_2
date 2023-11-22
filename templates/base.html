@@ -9,6 +9,10 @@
     <title>Re:Try</title>
 </head>
 <body>
+    <a href="{% url 'accounts:login' %}">로그인</a>
+    <a href=" {% url 'accounts:logout' %} ">로그아웃</a>
+    <h1>{{user}}님의 만두</h1>
+    <br>
     {% block content%}
     {% endblock content%}
 </body>
