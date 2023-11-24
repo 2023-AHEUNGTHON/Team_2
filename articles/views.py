@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from articles.models import Article
-from .forms import ArticleForm
+from articles.models import Article, Comment
+from .forms import ArticleForm, CommentForm
 
 
 def index(request):
@@ -9,7 +9,14 @@ def index(request):
 
 def detail(request, pk):
     article = Article.objects.get(pk=pk)
-    return render(request, 'articles/detail.html', {'article': article})
+    comment_form = CommentForm()
+    commnets = article.comment_set.all()
+    context = {
+        'article' : article,
+        'comment_form' : comment_form,
+        'comments' : commnets,
+    }
+    return render(request, 'articles/detail.html', context)
 
 def create(request):
     if request.method == 'POST':
@@ -46,3 +53,12 @@ def delete(request, pk):
         return redirect('articles:index')
     else:
         return redirect('articles:detail', article.pk)
+    
+def comments_create(request, pk):
+    article = Article.objects.get(pk=pk)
+    comment_form = CommentForm(request.POST)
+    if comment_form.is_valid():
+        comment = comment_form.save(commit=False)
+        comment.article = article
+        comment.save()
+    return redirect('articles:detail', article.pk)

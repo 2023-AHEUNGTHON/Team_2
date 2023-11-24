@@ -25,4 +25,18 @@
         <p>No article available.</p>
     {%endif%}
 
+    <h5>Comment</h5>
+    <hr>
+    <h4>댓글 목록</h4>
+    <ul>
+        {% for comment in comments %}
+            <li>{{ comment.content }}</li>
+        {% endfor %}
+    </ul>
+    
+    <form action="{ % url 'articles:comments_creaete' article.pk % }" method="POST">
+        {% csrf_token %}
+        {{ comment_form }}
+        <input type="submit" value="작성">
+    </form>
 {% endblock content%}
