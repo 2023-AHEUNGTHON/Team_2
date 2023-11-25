@@ -134,3 +134,71 @@ span:nth-child(4n-3) { color:#4B3C16; text-shadow:1px 1px  hsl(50, 75%, 45%), 2p
   width: 200px;
   border-radius: 50px;
 }
+
+.main_img {
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+}
+ /*서브타이틀*/
+ .sub-title {
+  color: B4A763;
+  font-family: GmarketSansBold;
+  font-size: 20px;
+  font-weight: bolder;
+ }
+
+ /*버튼*/
+ .login_button {
+  background-color: 4B3C16;
+  padding: 10px ;
+  bottom: 90px;
+  left: 100px;
+  border-radius: 10px;
+  position: absolute;
+  border: none;
+  font-size: 20px;
+  font-family: GmarketSansBold;
+  width: 200px;
+  color: white;
+  margin-bottom: 6px;
+
+ }
+
+
+ .register_button {
+  background-color: 4B3C16;
+  padding: 10px ;
+  bottom: 30px;
+  left: 100px;
+  border-radius: 10px;
+  position: absolute;
+  border: none;
+  font-size: 20px;
+  font-family: GmarketSansBold;
+  width: 200px;
+  color: white;
+ }
+
+
+ /*바탕 이미지*/
+ .mando4 {
+  position: absolute;
+  right: 0px;
+  width: 13vw;
+ }
+ 
+ .mando5 {
+  position: absolute;
+  left: 0px;
+  bottom: 35vh;
+  transform: scaleX(-1); transition: .3s;
+  width: 12.6vw;
+ }
+
+ .mando7 {
+  position: absolute;
+  right: 0px;
+  bottom: 21vh;
+  width: 13vw;
+ }
