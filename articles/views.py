@@ -4,7 +4,9 @@ from .forms import ArticleForm, CommentForm
 
 
 def index(request):
-    articles = Article.objects.all()
+    if request.user.is_anonymous:
+        return redirect('accounts:login')
+    articles = Article.objects.filter(author=request.user.id)
     return render(request, 'articles/index.html', {'articles': articles})
 
 def detail(request, pk):
@@ -40,7 +42,6 @@ def create(request):
     return render(request, 'articles/create.html', context)
 
 def update(request, pk):
-    print(pk)
     article = Article.objects.get(pk=pk)
 
     if request.method == "POST":
