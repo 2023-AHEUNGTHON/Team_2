@@ -9,6 +9,7 @@ def index(request):
     articles = Article.objects.filter(author=request.user.id)
     return render(request, 'articles/index.html', {'articles': articles})
 
+
 def detail(request, pk):
     if request.method == 'POST':
         article = Article.objects.get(pk=pk)
@@ -24,7 +25,7 @@ def detail(request, pk):
     commnets = Comment.objects.filter(article=pk)
     context = {
         'article' : article,
-        'article_link' : f'http://127.0.0.1:8000/articles/{article.id}/',
+        'article_link' : f'http://127.0.0.1:8000/{request.user.id}/articles/',
         'comment_form' : comment_form,
         'comments' : commnets,
     }
