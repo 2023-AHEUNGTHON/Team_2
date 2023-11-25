@@ -13,6 +13,7 @@
         <p>글 내용 : {{article.content}}</p>
         <p>생성시각 : {{article.created_at}}</p>
         <p>수정시각 : {{article.updated_at}}</p>
+        <p>공유링크 : {{article_link}}</p>
         <hr>
         <a href="{% url 'articles:index' %}">목록보기</a>
         <a href="{% url 'articles:update' article.pk %}">UPDATE</a>
@@ -29,14 +30,17 @@
     <hr>
     <h4>댓글 목록</h4>
     <ul>
+        {% if comments %}
         {% for comment in comments %}
             <li>{{ comment.content }}</li>
         {% endfor %}
+        {% endif %}
     </ul>
     
-    <form action="{ % url 'articles:comments_creaete' article.pk % }" method="POST">
+    <form method="POST">
         {% csrf_token %}
         {{ comment_form }}
         <input type="submit" value="작성">
     </form>
+
 {% endblock content%}
