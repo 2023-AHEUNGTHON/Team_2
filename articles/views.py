@@ -8,16 +8,25 @@ def index(request):
     return render(request, 'articles/index.html', {'articles': articles})
 
 def detail(request, pk):
+    if request.method == 'POST':
+        article = Article.objects.get(pk=pk)
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.article = article
+            comment.save()
+        return redirect('articles:detail', article.pk)
+    
     article = Article.objects.get(pk=pk)
     comment_form = CommentForm()
-    commnets = article.comment_set.all()
+    commnets = Comment.objects.filter(article=pk)
     context = {
         'article' : article,
+        'article_link' : f'http://127.0.0.1:8000/articles/{article.id}/',
         'comment_form' : comment_form,
         'comments' : commnets,
     }
     return render(request, 'articles/detail.html', context)
-
 def create(request):
     if request.method == 'POST':
         form = ArticleForm(request.POST, request.FILES)
@@ -54,11 +63,11 @@ def delete(request, pk):
     else:
         return redirect('articles:detail', article.pk)
     
-def comments_create(request, pk):
-    article = Article.objects.get(pk=pk)
-    comment_form = CommentForm(request.POST)
-    if comment_form.is_valid():
-        comment = comment_form.save(commit=False)
-        comment.article = article
-        comment.save()
-    return redirect('articles:detail', article.pk)
+# def comments_create(request, pk):
+#     article = Article.objects.get(pk=pk)
+#     comment_form = CommentForm(request.POST)
+#     if comment_form.is_valid():
+#         comment = comment_form.save(commit=False)
+#         comment.article = article
+#         comment.save()
+#     return redirect('articles:detail', article.pk)
