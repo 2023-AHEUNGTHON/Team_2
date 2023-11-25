@@ -20,8 +20,11 @@
                 </div>
                 <div class="login-wrapper">
                     <form class="loginform" action="{% url 'accounts:login' %}" method="POST" id="login-form">
-                            {% comment %} <input type="text" name="userId" placeholder="이메일">
-                            <input type="password" name="userPassword" placeholder="비밀번호"> {% endcomment %}
+                            {% comment %} 
+                            <input type="text" name="userId" placeholder="이메일">
+                            <input type="password" name="userPassword" placeholder="비밀번호"> 
+                            {% endcomment %}
+                            
                             {% csrf_token %}
                             {{ form.as_p }}
                             <input type="submit" value="로그인">

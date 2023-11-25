@@ -18,8 +18,8 @@ class CustomUserCreationForm(UserCreationForm):
         }
 
 class CustomAuthenticationForm(AuthenticationForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'loginform'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'loginform'}))
+    username = forms.CharField(widget=forms.TextInput)
+    password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
         fields = ('username', 'password')
