@@ -8,10 +8,13 @@
             <p><a href="{% url 'articles:detail' pk=article.pk %}">글 제목 : {{ article.title }}</a></p>
             <p>글 내용 : {{ article.content }}</p>
             <hr>
+            {% if article.author.id == request.user.id %}
+                <a href="{% url 'articles:create' %}">만들기</a>
+            {% endif %}
         {% endfor %}
     {% else %}
         <p>No article available.</p>
+        <a href="{% url 'articles:create' %}">만들기</a>
     {% endif %}
 
-    <a href="{% url 'articles:create' %}">만들기</a>
 {% endblock content %}

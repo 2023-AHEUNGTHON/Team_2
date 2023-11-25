@@ -25,7 +25,7 @@ def detail(request, pk):
     commnets = Comment.objects.filter(article=pk)
     context = {
         'article' : article,
-        'article_link' : f'http://127.0.0.1:8000/{request.user.id}/articles/',
+        'article_link' : f'http://127.0.0.1:8000/articles/{request.user.id}/list',
         'comment_form' : comment_form,
         'comments' : commnets,
     }
@@ -74,3 +74,7 @@ def delete(request, pk):
 #         comment.article = article
 #         comment.save()
 #     return redirect('articles:detail', article.pk)
+
+def article_list(request, pk):
+    articles = Article.objects.filter(author=pk)
+    return render(request, 'articles/index.html', {'articles': articles})
