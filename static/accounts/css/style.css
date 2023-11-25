@@ -1,0 +1,131 @@
+
+@font-face {
+  font-family: 'GmarketSansBold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SBAggroB';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'PartialSansKR-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/PartialSansKR-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Giants-Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PilseungGothic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/PilseungGothic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.body {
+  background-color: black;
+  /*filter: blur(100px);*/
+  filter: drop-shadow(0px 0px 8px white);
+  margin: 0;
+}
+
+.all {
+  text-align: center;
+}
+
+.title {
+  color: #7B6A3E;
+  max-width: 415px;
+  font-size: 50px;
+  margin-top: 8rem;
+  font-family: PilseungGothic;
+}
+
+h1 span {
+  display: inline-block;
+  animation: bounce 2s ease-in-out infinite;
+  font-size: 70px;
+}
+
+span:nth-child(4n) { color:#4B3C16; text-shadow:1px 1px hsl(50, 75%, 45%), 2px 2px hsl(50, 45%, 45%), 3px 3px hsl(50, 45%, 45%), 4px 4px hsl(50, 75%, 45%); }
+span:nth-child(4n-1) { color:#4B3C16; text-shadow:1px 1px hsl(50, 75%, 45%), 2px 2px hsl(50, 45%, 45%), 3px 3px hsl(50, 45%, 45%), 4px 4px hsl(50, 75%, 45%); }
+span:nth-child(4n-2) { color:#4B3C16; text-shadow:1px 1px hsl(50, 75%, 45%), 2px 2px hsl(50, 45%, 45%), 3px 3px hsl(50, 45%, 45%), 4px 4px hsl(50, 75%, 45%); }
+span:nth-child(4n-3) { color:#4B3C16; text-shadow:1px 1px  hsl(50, 75%, 45%), 2px 2px hsl(50, 45%, 45%), 3px 3px hsl(50, 45%, 45%), 4px 4px hsl(50, 75%, 45%); }
+
+.main_img{
+  margin: 40px;
+}
+
+.mando2 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.display-container {
+  flex-direction: column; /* 아래방향 */
+  position: relative;
+  max-width: 415px;
+  margin-right: auto;
+  margin-left: auto;
+  min-height: 100vh;
+  background-color: rgb(242, 241, 201);
+  
+  overflow: hidden;
+  z-index: -2;
+}
+
+
+/*로그인 부분*/
+.loginform {
+  margin: 4px;
+}
+
+.login-wrapper{
+  flex-direction: column;
+  width: 400px;
+  height: 350px;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+
+#login-form > input{
+  width: 250px;
+  height: 48px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  background-color: rgb(242, 241, 201);
+  border: none;
+  border-bottom: 1px solid #4B3C16;
+}
+
+#login-form > input::placeholder{
+  color: #4B3C16;
+  font-weight: bold;
+  font-family: GmarketSansBold;
+}
+
+#login-form > input[type="submit"]{
+  color: #fff;
+  font-size: 16px;
+  font-family: GmarketSansBold;
+  background-color: #4B3C16;
+  margin-top: 20px;
+  border: none;
+  width: 200px;
+  border-radius: 50px;
+}

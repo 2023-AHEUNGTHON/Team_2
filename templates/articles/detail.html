@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-    <h1>DETAIL</h1>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="write.css">
+        <link rel="stylesheet" type=" text/css" href="style.css">
+        <title>man-do!</title>
+    </head>
     {% if article.image %}
         <img src="{{ article.image.url }}" >
     {% endif %}
@@ -13,7 +20,6 @@
         <p>글 내용 : {{article.content}}</p>
         <p>생성시각 : {{article.created_at}}</p>
         <p>수정시각 : {{article.updated_at}}</p>
-        <p>공유링크 : <a href="{{article_link}}">링크</a></p>
         <hr>
         <a href="{% url 'articles:index' %}">목록보기</a>
         <a href="{% url 'articles:update' article.pk %}">UPDATE</a>
@@ -30,17 +36,40 @@
     <hr>
     <h4>댓글 목록</h4>
     <ul>
-        {% if comments %}
         {% for comment in comments %}
             <li>{{ comment.content }}</li>
         {% endfor %}
-        {% endif %}
     </ul>
     
-    <form method="POST">
+    <form action="{ % url 'articles:comments_creaete' article.pk % }" method="POST">
         {% csrf_token %}
         {{ comment_form }}
         <input type="submit" value="작성">
     </form>
-
 {% endblock content%}
+
+<!DOCTYPE html>
+<body>
+    <form id="myForm" action="/url/" method="POST">
+    <div class="display-container">
+        <div class="background-image"><img src="page.png" alt="배경"></div>
+        <p>나의 목표</p>
+        <div class="memo" id="memoContainer">
+        <input type="text" id="memoTitle" placeholder="제목을 입력하세요">
+        <textarea spellcheck="false" id="memoText" placeholder="나의 목표 "></textarea>
+        <input type="file" id="uploadInput" accept="image/*" style="display: none;">
+        
+        <div class="img-preview"><img src="upload.png" id="uploadTrigger" alt="이미지"></div>
+  
+
+    </div>
+   
+    <!--추후 submit로 변경, sanveAndSend()-->
+        <button type="button" onclick="goMando(); ">만두 빚기 </button>
+    </div>
+</form>
+
+    <script src="write.js"></script>
+
+</body>
+</html>

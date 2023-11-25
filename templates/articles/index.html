@@ -1,20 +1,89 @@
-{% extends 'base.html' %}
-
-{% block content %}
-    <h1>index</h1>
-    {% if articles %}
-        {% for article in articles %}  
-            <p>글 번호 : {{ article.id }}</p>  
-            <p><a href="{% url 'articles:detail' pk=article.pk %}">글 제목 : {{ article.title }}</a></p>
-            <p>글 내용 : {{ article.content }}</p>
-            <hr>
-            {% if article.author.id == request.user.id %}
-                <a href="{% url 'articles:create' %}">만들기</a>
-            {% endif %}
-        {% endfor %}
-    {% else %}
-        <p>No article available.</p>
-        <a href="{% url 'articles:create' %}">만들기</a>
-    {% endif %}
-
-{% endblock content %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8" /> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'articles/css/mando.css' %}" />
+        <link rel="stylesheet" href="{% static 'articles/css/style.css' %}" />
+        <script src="{% static 'articles/js/mando.js' %}"></script>
+        <title>man-do!</title>
+    </head>
+    <body>
+      <div>
+        <div class="display-container">
+          <div class="background-image"><img src="{% static 'articles/source/img/page.png' %}" alt="배경" /></div>
+          <div class="user-mold">
+            <span id="user-name">{{ user.username }}</span><span
+              >님의 만두판</span>
+          </div>
+          <div class="image-grid">
+            <img
+              id="mold1"
+              src="{% static 'articles/source/img/mold.png' %}"
+              alt="만두틀"
+              onclick="changeMandoImage('mold1')"
+            />
+            <img
+              id="mold2"
+              src="{% static 'articles/source/img/mold.png' %}"
+              alt="만두틀"
+              onclick="changeMandoImage('mold2')"
+            />
+            <img
+              id="mold3"
+              src="{% static 'articles/source/img/mold.png' %}"
+              alt="만두틀"
+              onclick="changeMandoImage('mold3')"
+            />
+            <img
+              id="mold4"
+              src="{% static 'articles/source/img/mold.png' %}"
+              alt="만두틀"
+              onclick="changeMandoImage('mold4')"
+            />
+            <img
+              id="mold5"
+              src="{% static 'articles/source/img/mold.png' %}"
+              alt="만두틀"
+              onclick="changeMandoImage('mold5')"
+            />
+            <img
+              id="mold6"
+              src="{% static 'articles/source/img/mold.png' %}"
+              alt="만두틀"
+              onclick="changeMandoImage('mold6')"
+            />
+            <img
+              id="mold7"
+              src="{% static 'articles/source/img/mold.png' %}"
+              alt="만두틀"
+              onclick="changeMandoImage('mold7')"
+            />
+            <img
+              id="mold8"
+              src="{% static 'articles/source/img/mold.png' %}"
+              alt="만두틀"
+              onclick="changeMandoImage('mold8')"
+            />
+            <img
+              id="mold9"
+              src="{% static 'articles/source/img/mold.png' %}"
+              alt="만두틀"
+              onclick="changeMandoImage('mold9')"
+            />
+          </div>
+        <div id="link">
+          <img src="link.png" alt="공유하기" onclick="showLinkAlert();copyLink()" />
+        </div>
+        <img
+          id="link-alert"
+          src="{% static 'articles/source/img/link-alert.png' %}"
+          alt="링크가복사되었습니다"
+          style="display: none"
+        />
+        
+        <img id="reset-guide" src="{% static 'articles/source/img/reset_quide.png' %}"alt="만두리셋" style="display: none"  />
+      </div>
+      <a href="{% url 'articles:create' %}"><button  onclick="changeSequentialMandoImage()">글쓰기</button></a>
+    </body>
