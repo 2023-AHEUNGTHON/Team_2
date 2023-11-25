@@ -83,6 +83,7 @@
         />
         
         <img id="reset-guide" src="{% static 'articles/source/img/reset_quide.png' %}"alt="만두리셋" style="display: none"  />
+        <a href="{% url 'articles:create' %}"><button  onclick="changeSequentialMandoImage()">글쓰기</button></a>
       </div>
-      <a href="{% url 'articles:create' %}"><button  onclick="changeSequentialMandoImage()">글쓰기</button></a>
+      
     </body>
