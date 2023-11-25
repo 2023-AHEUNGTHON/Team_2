@@ -82,3 +82,26 @@
     width: 200px;
     border-radius: 50px;
 }
+.write-link {
+  background-color: #7B6A3E;
+  color: white;
+  border: none;
+  width: 150px;
+  height: 60px;
+  border-radius: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+  bottom: 5%;
+  left: 35%;
+  display: flex;
+  position: absolute;
+  align-items: center; /* Vertical centering */
+}
+
+.write-link a {
+  width: 100%; /* Make the link fill the container */
+  text-decoration: none; /* Remove default underline styling */
+  color: inherit; /* Inherit text color from the parent */
+}

@@ -1,60 +1,59 @@
+//reset 만두틀
+function resetImages() {
+  for (var i = 1; i <= 9; i++) {
+    var mold = document.getElementById("mold" + i);
+    var storedSrc = localStorage.getItem("mandoImageSrc_mold" + i);
 
-  //reset 만두틀
-  function resetImages() {
-    for (var i = 1; i <= 9; i++) {
-      var mold = document.getElementById("mold" + i);
-      var storedSrc = localStorage.getItem("mandoImageSrc_mold" + i);
-  
-      if (storedSrc && !storedSrc.includes("{% static 'articles/source/img/mold.png' %}")) {
-        mold.src = "{% static 'articles/source/img/mold.png' %}";
-        localStorage.removeItem("mandoImageSrc_mold" + i);
-      }
+    if (storedSrc && !storedSrc.includes("{% static 'articles/source/img/mold.png' %}")) {
+      mold.src = "{% static 'articles/source/img/mold.png' %}";
+      localStorage.removeItem("mandoImageSrc_mold" + i);
     }
   }
-  
-  document.getElementById("reset").addEventListener("click", resetImages);
-  
-  //만두 리셋 경고창
-  const reset = document.getElementById("reset");
-  const resetGuide = document.getElementById("reset-guide");
-  
-  reset.addEventListener("mouseover", function () {
-    resetGuide.style.display = "block";
-  });
-  
-  reset.addEventListener("mouseout", function () {
-    resetGuide.style.display = "none";
-  });
-  
-  //링크 복사
-  function copyLink() {
-    const currentPageUrl = window.location.href; // 현재 페이지의 URL
-  
-    const tempTextArea = document.createElement("textarea");
-    tempTextArea.value = currentPageUrl;
-    document.body.appendChild(tempTextArea);
-    tempTextArea.select();
-    document.execCommand("copy");
-    document.body.removeChild(tempTextArea);
-    
-  }
-  
-  //링크가 복사될 떄
-  function showLinkAlert() {
-    const linkAlert = document.getElementById("link-alert");
-  
-    if (linkAlert.style.display === "none") {
-      linkAlert.style.display = "block"; // 링크 알림 보이기
-      // 일정 시간이 지난 후에 다시 숨김 처리
-      setTimeout(function () {
-        linkAlert.style.display = "none";
-      }, 2000);
-    } else {
+}
+
+document.getElementById("reset").addEventListener("click", resetImages);
+
+//만두 리셋 경고창
+const reset = document.getElementById("reset");
+const resetGuide = document.getElementById("reset-guide");
+
+reset.addEventListener("mouseover", function () {
+  resetGuide.style.display = "block";
+});
+
+reset.addEventListener("mouseout", function () {
+  resetGuide.style.display = "none";
+});
+
+//링크 복사
+function copyLink() {
+  const currentPageUrl = window.location.href; // 현재 페이지의 URL
+
+  const tempTextArea = document.createElement("textarea");
+  tempTextArea.value = currentPageUrl;
+  document.body.appendChild(tempTextArea);
+  tempTextArea.select();
+  document.execCommand("copy");
+  document.body.removeChild(tempTextArea);
+
+}
+
+//링크가 복사될 떄
+function showLinkAlert() {
+  const linkAlert = document.getElementById("link-alert");
+
+  if (linkAlert.style.display === "none") {
+    linkAlert.style.display = "block"; // 링크 알림 보이기
+    // 일정 시간이 지난 후에 다시 숨김 처리
+    setTimeout(function () {
       linkAlert.style.display = "none";
-    }
+    }, 2000);
+  } else {
+    linkAlert.style.display = "none";
   }
+}
 
-  var currentMoldIndex = 0; // 현재 이미지 인덱스
+var currentMoldIndex = 0; // 현재 이미지 인덱스
 
 function changeMandoImage(id, newSrc) {
   var mold = document.getElementById(id);
@@ -86,4 +85,3 @@ function changeSequentialMandoImage() {
     changeMandoImage('mold' + i, newSrc);
   }
 }
-  

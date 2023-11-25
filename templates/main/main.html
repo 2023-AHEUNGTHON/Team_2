@@ -15,13 +15,13 @@
                 </div>
                 <div class="sub-title my-3">2024 목표설정 서비스</div>
                 <div class="main_img">
-                    <img class="mando4" src="./image/mando4.png" >
-                    <img class="mando5" src="./image/mando5.png">
-                    <img class="mando7" src="./image/mando7.png">
+                    <img class="mando4" src="{% static 'accounts/source/img/mando4.png' %}" >
+                    <img class="mando5" src="{% static 'accounts/source/img/mando5.png' %}">
+                    <img class="mando7" src="{% static 'accounts/source/img/mando7.png' %}">
                 </div>
                 <div class="button">
-                <a href="login.html"><div class="login_button">로그인</div></a>
-                <a href="registerpage.html"><div class="register_button">회원가입</div></a>
+                <a href="{% url 'accounts:login' %}"><div class="login_button">로그인</div></a>
+                <a href="{% url 'accounts:signup' %}"><div class="register_button">회원가입</div></a>
                 </div>
             </div>
         </div>
